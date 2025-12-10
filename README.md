@@ -2,7 +2,7 @@
 Spawn Expansion Gold Bars and Nuggets around the Chernarus Gold Mine. Can be used to spawn anything anywhere it simply used a center location and spawns gold nuggets around the Gold Mine with this setup. You can Adjust as you want.
 
 
-TLH GOLD MINE – UNIVERSAL INSTALL PACKAGE
+TLH GOLD MINE 
 =========================================
 
 This package works for:
