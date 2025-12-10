@@ -1,0 +1,71 @@
+//
+// === TLH GOLD MINE TRAIL SPAWNER SNIPPET ===
+// Paste on top of init.c
+static const vector GOLDMINE_CENTER = "8627.1084 0 13301.2100"; 
+
+//  Paste Below ABOVE Mission CreateCustomMission(...) inside init.c
+//
+
+
+void SpawnGoldObject(string classname, vector pos)
+{
+    float surfaceY = GetGame().SurfaceY(pos[0], pos[2]);
+    pos[1] = surfaceY + 0.05;
+    Object obj = GetGame().CreateObject(classname, pos, false, true, true);
+    if (obj) Print("[TLH GoldMine] spawned " + classname + " at " + pos.ToString());
+}
+
+int CountExistingGoldInRadius(vector center, float radius)
+{
+    array<Object> objs = new array<Object>;
+    array<CargoBase> proxy = new array<CargoBase>;
+    GetGame().GetObjectsAtPosition(center, radius, objs, proxy);
+
+    int count = 0;
+    for (int i = 0; i < objs.Count(); i++)
+        if (objs[i].IsKindOf("ExpansionGoldNugget") || objs[i].IsKindOf("ExpansionGoldBar"))
+            count++;
+
+    return count;
+}
+
+void SpawnGoldMineLoot()
+{
+    Print("[TLH GoldMine] SpawnGoldMineLoot() starting");
+
+    int existing = CountExistingGoldInRadius(GOLDMINE_CENTER, 60.0);
+    if (existing >= 40)
+    {
+        Print("[TLH GoldMine] too much gold present, skipping.");
+        return;
+    }
+
+    vector center = GOLDMINE_CENTER;
+
+    array<vector> offsets = new array<vector>;
+    offsets.Insert("0 0 0");
+    offsets.Insert("5 0 8");
+    offsets.Insert("-7 0 6");
+    offsets.Insert("10 0 -4");
+    offsets.Insert("-9 0 -5");
+    offsets.Insert("14 0 12");
+    offsets.Insert("-15 0 10");
+    offsets.Insert("18 0 -10");
+    offsets.Insert("-20 0 -12");
+    offsets.Insert("22 0 5");
+    offsets.Insert("-24 0 3");
+    offsets.Insert("28 0 -6");
+    offsets.Insert("-30 0 9");
+    offsets.Insert("32 0 -14");
+    offsets.Insert("-34 0 -8");
+    offsets.Insert("36 0 0");
+    offsets.Insert("38 0 12");
+    offsets.Insert("-40 0 -10");
+    offsets.Insert("42 0 4");
+    offsets.Insert("-45 0 14");
+
+    for (int i = 0; i < offsets.Count(); i++)
+        SpawnGoldObject("ExpansionGoldNugget", center + offsets[i]);
+
+    Print("[TLH GoldMine] finished");
+}

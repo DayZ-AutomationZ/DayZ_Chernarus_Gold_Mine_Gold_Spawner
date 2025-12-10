@@ -1,0 +1,69 @@
+<!-- === TLH GoldMine Recommended Settings === -->
+
+Before adding this, check if the Expansion gold classes already exist in your types.xml.
+If they do, simply update the <lifetime> value — do NOT duplicate the entries.
+Simply use Notepad++ or whatever text editor, use the rearch option and find the classes. If they not in there you can safely add it.
+
+REQUIREMENTS:
+• Expansion Core is required for these classnames:
+  - ExpansionGoldBar
+  - ExpansionGoldNugget
+  - (Optional) ExpansionSilverBar
+  - (Optional) ExpansionSilverNugget
+
+WHY LIFETIME MUST BE CHANGED:
+This gold spawn system is designed to refresh every server restart.
+If gold does NOT despawn before restart, it will begin stacking and eventually flood the mine.
+
+DEFAULT LIFETIME IN DAYZ = 45 DAYS (3888000 seconds)
+→ This is WAY too long for dynamically spawning gold.
+
+CORRECT LIFETIME CALCULATION:
+Your server restarts every 6 hours:
+6 hours = 21600 seconds
+
+We want the gold to despawn BEFORE the next restart.
+So we subtract some time to guarantee cleanup:
+
+21600 - 1200 = **20400 seconds**
+
+This ensures:
+• Gold stays long enough for players to find it
+• All gold despawns before next restart
+• No buildup of old nuggets or bars
+• No spam from the anti-duplicate protection
+
+IF YOUR SERVER DOES NOT USE 6-HOUR RESTARTS:
+Simply adjust like this:
+
+restart_time_hours × 3600 − 1200 = lifetime
+
+Examples:
+• 3-hour restarts → (3 × 3600) − 1200 = **8400**
+• 4-hour restarts → (4 × 3600) − 1200 = **12000**
+• 5-hour restarts → (5 × 3600) − 1200 = **16800**
+
+The important part:
+Gold MUST despawn before a fresh batch is spawned.
+
+RECOMMENDED TYPES.XML SETTINGS:
+--------------------------------
+
+<type name="ExpansionGoldNugget">
+    <lifetime>20400</lifetime>  <!-- Despawns before 6h restart -->
+</type>
+
+<type name="ExpansionGoldBar">
+    <lifetime>20400</lifetime>  <!-- Despawns before 6h restart -->
+</type>
+
+OPTIONAL SILVER SUPPORT:
+
+<type name="ExpansionSilverNugget">
+    <lifetime>20400</lifetime>
+</type>
+
+<type name="ExpansionSilverBar">
+    <lifetime>20400</lifetime>
+</type>
+
