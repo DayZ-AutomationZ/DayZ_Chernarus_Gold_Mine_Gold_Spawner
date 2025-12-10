@@ -4,11 +4,11 @@ TLH GOLD MINE – UNIVERSAL INSTALL PACKAGE
 
 This package works for:
 • Servers with a clean/default init.c
-• Servers with an already modified init.c (like Patreon systems, custom functions, etc.)
+• Servers with an already modified init.c (like Kit Claim systems, custom functions, etc.)
 
 REQUIREMENTS
 ------------
-• ChernarusPlus map
+• ChernarusPlus map (can be used on all maps ofcourse, simply uses a center point, can be used to spawn anything on any location. Just modify coordinates.
 • Expansion Core installed (for ExpansionGoldNugget / ExpansionGoldBar)
 
 FILES IN THIS PACKAGE
