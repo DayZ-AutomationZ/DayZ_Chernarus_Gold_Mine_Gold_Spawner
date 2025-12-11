@@ -1,0 +1,36 @@
+
+---
+
+# 📄 **.gitignore for this repo**
+
+Create a file named `.gitignore` and paste:
+
+```gitignore
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Python (if added later)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# DayZ persistence / CE junk
+storage_*/
+*.bin
+types.bin
+events.bin
+globals.bin
+territories*
+
+# Logs
+*.log
+*.rpt
+
+# Temporary or backup files
+*.bak
+*.backup
+*~
+temp_*
+test_*
