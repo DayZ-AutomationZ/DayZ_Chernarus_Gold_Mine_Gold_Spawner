@@ -1,4 +1,4 @@
-## ⚡ TL;DR – Gold Mine Trail Spawner (Chernarus)
+## ⚡ TL;DR – Gold Mine nugget Spawner (Chernarus)
 
 1. Copy the snippet file `TLH_GoldMine_Trail_Snippet_init.c.txt`
    into your mission folder:
