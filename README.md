@@ -1,3 +1,28 @@
+## ⚡ TL;DR – Gold Mine Trail Spawner (Chernarus)
+
+1. Copy the snippet file `TLH_GoldMine_Trail_Snippet_init.c.txt`
+   into your mission folder:
+   `mpmissions/dayzOffline.chernarusplus/init.c`
+
+2. At the top of your `init.c`, ensure this constant exists:
+   ```c
+   static const vector GOLDMINE_CENTER = "8627.1084 0 13301.2100";
+3. Paste all gold-mine functions ABOVE:
+   `Mission CreateCustomMission(string path)`
+4. nside main() add the call:
+   `SpawnGoldMineLoot();`
+5. Copy the example types from:
+   `TLH_GoldMine_Types_Example.xml` into your `types.xml` if the gold classes do not already exist.
+6.Set lifetime (important!):
+   6-hour restarts → `lifetime = 20400`
+   Formula: `(restart_hours * 3600) - 1200`
+7. Restart your server.
+   Nuggets now spawn in a natural trail around the gold mine each restart.
+
+   Anti-spam is built-in:
+   If more than 40 gold objects already exist in the 60m radius,
+   the script skips spawning to avoid duplication problems.
+
 # DayZ_Chernarus_Gold_Mine_Gold_Spawner
 Spawn Expansion Gold Bars and Nuggets around the Chernarus Gold Mine. Can be used to spawn anything anywhere it simply used a center location and spawns gold nuggets around the Gold Mine with this setup. You can Adjust as you want.
 
